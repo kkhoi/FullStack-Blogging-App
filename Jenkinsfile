@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                git branch: 'end', url: 'https://github.com/kkhoi/Simple-Twitter.git'
+                git branch: 'main', url: 'https://github.com/kkhoi/FullStack-Blogging-App.git'
             }
         }
         stage('Compile') {
