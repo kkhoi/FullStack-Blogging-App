@@ -19,26 +19,26 @@ pipeline {
                 sh 'mvn compile'
             }
         }
-        stage('Sonar Ana') {
-            steps {
-                withSonarQubeEnv('sonarserver') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectKey=Blogging-app -Dsonar.projectName=Blogging-app \
-                    -Dsonar.java.binaries=target '''
-                }
-            }
-        }
+        // stage('Sonar Ana') {
+        //     steps {
+        //         withSonarQubeEnv('sonarserver') {
+        //             sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectKey=Blogging-app -Dsonar.projectName=Blogging-app \
+        //             -Dsonar.java.binaries=target '''
+        //         }
+        //     }
+        // }
         stage('Build') {
             steps {
                 sh 'mvn package'
             }
         }
-        stage('Publish Artifact') {
-            steps {
-                withMaven(globalMavenSettingsConfig: 'maven-setting', jdk: 'jdk17', maven: 'maven3', mavenSettingsConfig: '', traceability: true) {
-                    sh 'mvn deploy'
-                }
-            }
-        }
+        // stage('Publish Artifact') {
+        //     steps {
+        //         withMaven(globalMavenSettingsConfig: 'maven-setting', jdk: 'jdk17', maven: 'maven3', mavenSettingsConfig: '', traceability: true) {
+        //             sh 'mvn deploy'
+        //         }
+        //     }
+        // }
         stage('Build Docker Image') {
             steps {
                 script {
